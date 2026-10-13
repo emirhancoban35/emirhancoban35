@@ -63,25 +63,42 @@ The source repository is private, but Color Coil remains one of the projects tha
 
 ---
 
-## 🀄 Rummy Tile Framework
+## 🀄 Okey Rummy
 
-This project originally started years ago as **101 Okey Lite**.
+A modular Unity project supporting both **Classic Okey and 101 Okey** on top of the same reusable tile-game architecture.
 
-The original architecture was written during the period when I became heavily interested in OOP, modular gameplay systems and responsibility separation.
+The project originally started as **101 Okey Lite**, an older hand-written Unity project I built while getting deeper into OOP, modular systems and responsibility separation. I later returned to the original foundation and expanded it into a much broader Okey / Rummy framework.
 
-Instead of keeping the project tied to a single 101 Okey implementation, I'm expanding the original foundation into a reusable framework for **Okey / Rummy-style tile games**.
+Today, the project includes a complete local table experience with **one human player and three AI opponents**, configurable game rules, local rooms, partnership play, scoring, turn timers and separate Classic Okey / 101 Okey gameplay policies.
 
-The framework is being structured around reusable systems for:
+### Some of the systems include
 
-- Tile representation
-- Player hands
-- Turn flow
-- Rule abstraction
-- Meld / sequence validation
-- Game state
-- Multiple rule sets and game modes
+- Classic Okey and 101 Okey sharing the same table, rack and input infrastructure
+- Runs, sets, pairs, real jokers and physical fake jokers
+- Configurable opening thresholds, penalties and rising openings
+- Public meld boards and tile layoffs
+- Joker reclaim rules
+- Individual and opposite-seat partnership modes
+- Local room creation, browsing, passwords and configurable match lengths
+- Multiple AI behaviors with replaceable decision policies
+- Match history and separate scoring implementations for each game mode
+- Drag-and-drop rack organization and group movement
+- Turn timers with automatic legal timeout actions
 
-A significant part of the original foundation comes from my earlier hand-written Unity work, while the newer version expands that architecture into a broader reusable framework.
+The architecture is split into separate assemblies:
+
+**Okey.Core** contains the Unity-independent game state, rules, scoring, AI and room logic.  
+**Okey.Configuration** adapts ScriptableObjects into runtime configuration.  
+**Okey.Presentation** contains passive views and input handling.  
+**Okey.Composition** connects the application through Zenject and coordinates gameplay.
+
+The core gameplay doesn't branch on game-name enums. Different game modes provide their own rules, opening policies, scoring and bot behavior through replaceable boundaries.
+
+The project also contains **EditMode and PlayMode test suites** covering game rules, deck generation, AI decisions, scoring, room flow, pointer interactions, scene bindings and real gameplay flows.
+
+A large part of the original foundation comes from my earlier hand-written Unity work, while the current version expands that architecture into a reusable and configurable system for Okey-style games.
+
+[View Repository →](https://github.com/emirhancoban35/okey-rummy)
 
 ---
 
